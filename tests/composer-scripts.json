@@ -1,0 +1,6 @@
+{
+  "extends": "../tests/composer-scripts-test.json",
+  "scripts": {
+    "hello": "echo 'Hello, world!'"
+  }
+}

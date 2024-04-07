@@ -1,0 +1,31 @@
+{
+    "name": "strictphp/sync-composer-plugin-test",
+    "authors": [
+        {
+            "name": "Martin Kluska",
+            "email": "martin@kluska.cz"
+        }
+    ],
+    "scripts": {
+        "already-set": "echo 'already-set'",
+        "hello": "echo 'Hello, world!'",
+        "hello-2": "echo 'Hello, world!'"
+    },
+    "require": {
+        "strictphp/sync-composer-plugin": "dev-main"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "strictphp/sync-composer-plugin": true
+        }
+    }
+}

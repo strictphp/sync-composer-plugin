@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "hello": "echo 'This should not be in final output'",
+    "hello-2": "echo 'Hello, world!'"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "strictphp/sync-composer-plugin",
+  "description": "Composer plugin for syncing your shared composer scripts between projects.",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "StrictPhp\\SyncScriptsPlugin\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Martin Kluska",
+      "email": "martin@kluska.cz"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.0",
+    "strictphp/conventions": "^v0.1.5"
+  },
+  "scripts": {
+    "check": "composer lint && composer test && composer analyse",
+    "analyse": "./vendor/bin/phpstan",
+    "lint:check": "./vendor/bin/ecs",
+    "lint:fix": "./vendor/bin/ecs --fix",
+    "lint:upgrade:check": "vendor/bin/rector process --dry-run",
+    "lint:upgrade": "vendor/bin/rector process",
+    "lint": "composer lint:upgrade && composer lint:fix",
+    "test": "bash tests/test.sh"
+  },
+  "extra": {
+    "class": "StrictPhp\\SyncScriptsPlugin\\ScriptsUpdaterPlugin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "strictphp/sync-composer-plugin": true,
+      "phpstan/extension-installer": true
+    }
+  }
+}

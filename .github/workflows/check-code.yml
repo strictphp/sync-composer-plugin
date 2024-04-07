@@ -1,0 +1,37 @@
+name: "Code check"
+
+on:
+  push:
+    branches:
+      - "main"
+
+  workflow_call:
+
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "composer.json"
+      - "ecs.php"
+      - "rector.php"
+      - "phpstan.neon"
+
+concurrency:
+  group: conventions-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code:
+    name: "Code check"
+    strategy:
+      matrix:
+        phpVersion: [ "8.1", "8.2", "8.3" ]
+    uses: wrk-flow/reusable-workflows/.github/workflows/php-check.yml@7562253bdc3769847417e3476b501e7126f5d2c0
+    secrets: inherit
+
+  tests:
+    name: "Run tests"
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash tests/test.sh
+

@@ -19,6 +19,8 @@ cp $INIT_JSON $COMPOSER_JSON
 echo "Running update-scripts command..."
 echo "START --"
 
+composer update
+
 composer update-scripts -vvvv
 
 echo "END --"

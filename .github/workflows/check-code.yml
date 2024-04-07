@@ -26,12 +26,14 @@ jobs:
     strategy:
       matrix:
         phpVersion: [ "8.1", "8.2", "8.3" ]
-    uses: wrk-flow/reusable-workflows/.github/workflows/php-check.yml@7562253bdc3769847417e3476b501e7126f5d2c0
+    uses: wrk-flow/reusable-workflows/.github/workflows/php-check.yml@b60da7b83d3d6e71ba2ec59d8ea1b98f48aae558
     secrets: inherit
 
   tests:
     name: "Run tests"
     runs-on: ubuntu-latest
+
     steps:
+      - uses: actions/checkout@v4
       - run: bash tests/test.sh
 
